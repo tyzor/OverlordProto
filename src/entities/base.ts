@@ -1,16 +1,15 @@
 import {
   Color3,
   Mesh,
-  MeshBuilder,
   Scene,
   StandardMaterial,
   Vector3,
   VertexData,
 } from "@babylonjs/core";
-import { PhysicsSystem } from "../systems/physics";
-import { createEntity } from "./entity";
-import { BASE_ROWS, WORLD_BASES } from "../world";
 import RAPIER from "@dimforge/rapier2d-compat";
+import { PhysicsSystem } from "../systems/physics";
+import { BASE_ROWS, WORLD_BASES } from "../world";
+import { createEntity } from "./entity";
 
 // Create block for a base
 const BLOCK_QUADS = 4;
@@ -153,6 +152,7 @@ export function createBaseBlock(
   physics.registerRigidBody(rigidBody, obj);
   physics.registerCollider(blockCollider, obj);
 
+  obj.factionId = playerId;
   obj.health = 1;
   obj.maxHealth = 1;
 }
